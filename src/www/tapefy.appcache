@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# v2
+CACHE:
+/
+lib/bootstrap.min.css
+
+lib/font-awesome.min.css
+fonts/fontawesome-webfont.woff
+fonts/fontawesome-webfont.woff2
+
+lib/app.css
+lib/player.js
+
+NETWORK:
+tapefy.appcache

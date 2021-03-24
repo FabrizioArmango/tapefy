@@ -1,0 +1,477 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav.navbar {
+  top: 0;
+  position: sticky;
+  z-index: 999;
+  background-image: linear-gradient(120deg, rgb(132, 250, 176) 0%, rgb(143, 211, 244) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+nav.navbar .navbar-brand {
+  font-family: 'Fredoka One', cursive;
+}
+
+html {
+  overflow: hidden;
+}
+
+html, body {
+  -webkit-overflow-scrolling: touch !important;
+  /*overflow: auto !important;*/
+  height: 100% !important;
+  overscroll-behavior: contain;
+}
+
+body {
+  /*
+
+   */
+  margin: auto;
+  width: 100%;
+  */ overflow: auto;
+  height: 100%;
+  overscroll-behavior: contain;
+  /* Allows you to scroll below the viewport; default value is visible */
+  overflow-y: scroll;
+  /* To smooth any scrolling behavior */
+  -webkit-overflow-scrolling: touch;
+  /* Break the flow
+  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
+  position: relative;
+  top: 0px;*/
+  /* Give them all the available space
+  width: 100%;
+  margin: 0;
+  overflow-y: hidden;
+  height: 100%;*/
+  /* Remove the margins if any */
+  /* Allow them to scroll down the document
+  background-color: #222;
+  */
+}
+
+main {
+  overflow: hidden;
+}
+
+#tp-player-controller {
+  top: 0px;
+  position: fixed;
+  z-index: 999;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+  color: #fff;
+}
+
+#tp-player-controller:not(.shrinked) {
+  min-height: 320px;
+}
+
+#tp-player-controller.shrinked {
+  min-height: 80px;
+  position: fixed;
+  z-index: 999;
+  /*
+  overflow-y: scroll;
+  */
+  background-color: #333;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  width: calc(100% - 2rem);
+  border-radius: .25rem;
+}
+
+#tp-player-controller.shrinked {
+  height: 12%;
+  top: calc(100% - 12% - 1rem);
+}
+
+
+#tp-player-controller.shrinked button.close,
+.playlist-wrapper button.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .75rem 1.25rem;
+  color: inherit;
+  display: none;
+}
+
+#tp-player-controller.shrinked button.close {
+  display: block;
+}
+
+#tp-player-controller.shrinked #progressbar {
+  height: 0.5rem;
+}
+
+#tp-player-controller.shrinked .controls {
+  padding: 0;
+}
+
+#tp-player-inner {
+  height: 75%;
+}
+
+#tp-player-bottom {
+  height: 25%;
+}
+
+#current-album-figure img {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  #tp-player-controller.shrinked {
+    height: 20%;
+    top: calc(100% - 20% - 1rem);
+  }
+
+  #tp-player-inner {
+    height: 50%;
+  }
+
+  #tp-player-inner>div.col.h-100 {
+    display: flex;
+  }
+
+  #tp-player-inner #current-album-figure,
+  #tp-player-inner div.row.h-25.justify-content-center.align-items-start {
+    width: 50%;
+    height: 100% !important;
+  }
+
+  #tp-player-inner div.row.h-25.justify-content-center.align-items-start>div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0 !important;
+    justify-content: center;
+    padding-right: 0 !important;
+    max-width: 70%;
+    width: 70%;
+    min-width: 70%;
+  }
+
+  .song-artist, .song-album, .song-title {
+    width: 100%;
+  }
+
+  #playlist-header {
+    height: 20% !important;
+  }
+
+  #playlist-body {
+    height: 80% !important;
+  }
+
+  #tp-player-bottom {
+    height: 50%;
+  }
+}
+
+@media (orientation: portrait) {}
+
+#tp-player-controller .controls {
+  color: #91ffd5;
+  display: block;
+}
+
+#playlist-container {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#playlist-container div#playlist-header {
+  height: 10%;
+}
+
+#playlist-container div#playlist-body {
+  height: 90%;
+  overflow-y: scroll;
+  background-color: #222;
+}
+
+#playlist-container div#playlist-body .list-group-item {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#playlist-container div#playlist-body .list-group-item.active {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+#playlist-toggle {
+  z-index: 9999;
+  right: 0;
+  top: 0;
+  color: #ccc;
+  width: 40px;
+  height: 40px;
+  /* bottom: 100px; */
+  bottom: 14vh;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  position: absolute;
+  background-color: crimson;
+}
+
+/*
+#tp-player-inner {
+  position: relative;
+}
+
+#tp-player-background {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  bottom: 5%;
+  right: 5%;
+  background: url(/imgs/qvc8.jpg);
+  filter: blur(30px);
+}
+*/
+#tp-player-bottom {
+  filter: blur(0);
+}
+
+#tp-player-bottom div.inner {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#progressbar-inner {
+  background-color: red;
+}
+
+.hiding {
+  -webkit-animation-name: example;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 0.2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  border-radius: 0.5rem;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  2% {
+    bottom: 1rem;
+  }
+
+  50% {
+    background-color: #333;
+  }
+
+  100% {
+    top: calc(100% - 12% - 1rem);
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+    height: 12%;
+  }
+}
+
+/* Standard syntax */
+@keyframes example {
+  2% {
+    bottom: 1rem;
+  }
+
+  50% {
+    background-color: #333;
+  }
+
+  100% {
+    top: calc(100% - 12% - 1rem);
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+    height: 12%;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes example {
+    2% {
+      bottom: 1rem;
+    }
+
+    50% {
+      background-color: #333;
+    }
+
+    100% {
+      top: calc(100% - 20% - 1rem);
+      bottom: 1rem;
+      width: calc(100% - 2rem);
+      height: 20%;
+    }
+  }
+
+  /* Standard syntax */
+  @keyframes example {
+    2% {
+      bottom: 1rem;
+    }
+
+    50% {
+      background-color: #333;
+    }
+
+    100% {
+      top: calc(100% - 20% - 1rem);
+      bottom: 1rem;
+      width: calc(100% - 2rem);
+      height: 20%;
+    }
+  }
+}
+
+/*
+Pagina
+Le mie Playlist
+*/
+#my-playlists-container a.list-group-item input[type=radio],
+.card.song input[type=radio] {
+  display: none;
+}
+
+#my-playlists-container a.list-group-item {
+  padding: 0;
+}
+
+#my-playlists-container a.list-group-item input[type=radio]~label,
+.card.song input[type=radio]~label {
+  margin-bottom: 0;
+  padding: .75rem 1.25rem;
+  overflow: hidden;
+}
+
+#my-playlists-container a.list-group-item input[type=radio]:not(checked)~label button,
+.card.song input[type=radio]:not(checked)~label button.playlist,
+.card.song input[type=radio]:not(checked)~label button.play {
+  opacity: 0;
+}
+
+#my-playlists-container a.list-group-item input[type=radio]:not(checked)~label button,
+.card.song input[type=radio]:checked~label button.playlist,
+.card.song input[type=radio]:checked~label button.play {
+  -webkit-animation-name: buttonGo;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 0.4s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: buttonGo;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+#my-playlists-container a.list-group-item input[type=radio]:checked~label button,
+.card.song input[type=radio]:checked~label button.playlist,
+.card.song input[type=radio]:checked~label button.play {
+  display: inline-block;
+  -webkit-animation-name: buttonCome;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 0.2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: buttonCome;
+  animation-duration: 0.2s;
+}
+
+.card.song .playlist-wrapper .list-group {
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+  max-height: 10rem;
+  overflow-y: scroll;
+  position: relative;
+  min-width: 11rem;
+}
+
+/*
+
+  min-width: 11rem;
+  max-height: 10rem;
+  overflow-y: scroll;
+  padding: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+}
+
+.card.song .playlist-wrapper ul li {
+  position: relative;
+  line-height: 2rem;
+  border-bottom-color: lightgrey;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  margin-bottom: 0.25rem;
+}
+*/
+/* Safari 4.0 - 8.0 */
+/* Standard syntax */
+@keyframes buttonCome {
+  from {
+    opacity: 0;
+    margin-right: -50px;
+  }
+
+  to {
+    opacity: 1;
+    margin-right: -0px;
+  }
+}
+
+/* Standard syntax */
+@keyframes buttonCome {
+  from {
+    opacity: 0;
+    margin-right: -50px;
+  }
+
+  to {
+    opacity: 1;
+    margin-right: -0px;
+  }
+}
+
+/* Safari 4.0 - 8.0 */
+/* Standard syntax */
+@keyframes buttonGo {
+  from {
+    opacity: 1;
+    margin-right: -0px;
+  }
+
+  to {
+    opacity: 0;
+    margin-right: -100px;
+  }
+}
+
+/* Standard syntax */
+@keyframes buttonGo {
+  from {
+    opacity: 1;
+    margin-right: -0px;
+  }
+
+  to {
+    opacity: 0;
+    margin-right: -100px;
+  }
+}

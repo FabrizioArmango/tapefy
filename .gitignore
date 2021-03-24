@@ -1,0 +1,13 @@
+/prev_arch
+/src/tracks
+/src/.vagrant
+/src/www/imgs
+/src/www/tracks
+
+/src/tapefy-cordova
+
+app-debug.apk
+*.sql
+
+
+*.pdf
