@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  tapefy:
+    build:
+      context: .
+    container_name: tapefy
+    image: tapefy
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: db-service
+      MYSQL_DATABASE: tapefy
+      MYSQL_USER: vagrantdb
+      MYSQL_PASSWORD: vagrantdb
+    depends_on:
+      db-service:
+        condition: service_healthy
+    networks:
+      - db-network
+
+  db-service:
+    image: mysql
+    ports:
+      - "3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: "vagrantdb"
+      MYSQL_DATABASE: "tapefy"
+      MYSQL_PASSWORD: "vagrantdb"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 2s
+      interval: 2s
+      start_period: 1s
+      retries: 10
+    networks:
+      - db-network
+
+  phpmyadmin-service:
+    image: phpmyadmin
+    ports:
+      - "8070:80"
+    environment:
+      PMA_HOST: db-service
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    networks:
+      - db-network
+    depends_on:
+      db-service:
+        condition: service_healthy
+
+networks:
+  db-network:
+    driver: bridge
